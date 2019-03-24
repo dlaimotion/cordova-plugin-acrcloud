@@ -1,4 +1,4 @@
-Cordova Plugin Template
+ACRCloud Cordova Plugin
 ======
 
-This is a simple starting point for building a Cordova plugin on iOS and Android.
+This plugin implements ACRCloud SDK for iOS & Android.
