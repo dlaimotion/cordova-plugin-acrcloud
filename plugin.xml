@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    id="cordova-plugin-acrcloud"
+    version="1.0.0">
+    <name>Cordova Plugin For ACRCloud</name>
+    <description></description>
+    <license>MIT</license>
+    <keywords></keywords>
+    <repo>https://github.com/dlaimotion/cordova-plugin-acrcloud.git</repo>
+    <issue>https://github.com/dlaimotion/cordova-plugin-acrcloud/issues</issue>
+
+    <!--<preference name="ACCESS_KEY" />-->
+    <!--<preference name="ACCESS_SECRET" />-->
+    <!--<preference name="HOST" />-->
+
+    <!-- android -->
+    <platform name="android">
+      <js-module src="www/plugin.js" name="plugin">
+        <runs/>
+
+        <!-- This is the window variable name you want, like window.MyCordovaPlugin -->
+        <clobbers target="CordovaPluginACRCloud" />
+      </js-module>
+      <config-file target="res/xml/config.xml" parent="/*">
+        <feature name="CordovaPluginACRCloud">
+          <param name="android-package" value="com.dlaimotion.CordovaPluginACRCloud" />
+          <param name="onload" value="true" />
+        </feature>
+      </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.RECORD_AUDIO" />
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+            <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+            <uses-permission android:name="android.permission.INTERNET" />
+        </config-file>
+
+        <!--<source-file src="src/android/acrcloud_android.xml" target-dir="res/values" />-->
+
+        <!--&lt;!&ndash; Used for cordova-android 6 &ndash;&gt;-->
+        <!--<config-file target="res/values/acrcloud_android.xml" parent="/*">-->
+            <!--<string name="access_key">$ACCESS_KEY</string>-->
+            <!--<string name="access_secret">$ACCESS_SECRET</string>-->
+            <!--<string name="host">$HOST</string>-->
+        <!--</config-file>-->
+        <!--&lt;!&ndash; Used for cordova-android 7 &ndash;&gt;-->
+        <!--<config-file target="app/src/main/res/values/acrcloud_android.xml" parent="/*">-->
+            <!--<string name="access_key">$ACCESS_KEY</string>-->
+            <!--<string name="access_secret">$ACCESS_SECRET</string>-->
+            <!--<string name="host">$HOST</string>-->
+        <!--</config-file>-->
+
+        <!--<config-file target="AndroidManifest.xml" parent="application">-->
+            <!--<meta-data android:name="accessKey" android:value="@string/access_key"/>-->
+            <!--<meta-data android:name="accessSecret" android:value="@string/access_secret" />-->
+            <!--<meta-data android:name="host" android:value="@string/host" />-->
+        <!--</config-file>-->
+
+      <source-file src="src/android/CordovaPluginACRCloud.java" target-dir="src/com/dlaimotion/" />
+      <framework src="src/android/build.gradle" custom="true" type="gradleReference" />
+      <lib-file src="src/android/libs/acrcloud-android-sdk-1.5.7.6.jar"/>
+
+        <source-file src="src/android/libs/arm64-v8a/libACRCloudEngine.so" target-dir="app/src/main/jniLibs/arm64-v8a/" />
+        <source-file src="src/android/libs/armeabi-v7a/libACRCloudEngine.so" target-dir="app/src/main/jniLibs/armeabi-v7a/" />
+        <source-file src="src/android/libs/x86/libACRCloudEngine.so" target-dir="app/src/main/jniLibs/x86/" />
+        <source-file src="src/android/libs/x86_64/libACRCloudEngine.so" target-dir="app/src/main/jniLibs/x86_64/" />
+
+    </platform>
+
+    <!-- ios -->
+    <platform name="ios">
+        <js-module src="www/plugin.js" name="plugin">
+            <runs/>
+            <clobbers target="CordovaPluginACRCloud" />
+        </js-module>
+        <config-file target="config.xml" parent="/*">
+            <feature name="CordovaPluginACRCloud">
+                <param name="ios-package" value="CordovaPluginACRCloud" onload="true" />
+            </feature>
+        </config-file>
+
+        <!--<config-file target="*-Info.plist" parent="ACRCloudAccessKey">-->
+            <!--<string>$ACCESS_KEY</string>-->
+        <!--</config-file>-->
+        <!--<config-file target="*-Info.plist" parent="ACRCloudAccessSecret">-->
+            <!--<string>$ACCESS_SECRET</string>-->
+        <!--</config-file>-->
+        <!--<config-file target="*-Info.plist" parent="ACRCloudHost">-->
+            <!--<string>$HOST</string>-->
+        <!--</config-file>-->
+
+        <header-file src="src/ios/CordovaPluginACRCloud.h"  />
+        <source-file src="src/ios/CordovaPluginACRCloud.m"  />
+
+        <header-file src="src/ios/ACRCloudRecognition.h" />
+        <header-file src="src/ios/ACRCloudConfig.h" />
+
+        <source-file src="src/ios/libACRCloud_IOS_SDK.a" target-dir="lib" framework="true" />
+
+        <framework src="libc++.tbd" />
+        <framework src="AudioToolbox.framework" />
+        <framework src="AVFoundation.framework" />
+        <framework src="Security.framework" />
+
+    </platform>
+</plugin>

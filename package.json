@@ -1,0 +1,26 @@
+{
+  "name": "cordova-plugin-acrcloud",
+  "version": "1.0.0",
+  "cordova": {
+    "id": "cordova-plugin-acrcloud",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "description": "This plugin implements ACRCloud SDK for iOS & Android",
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dlaimotion/cordova-plugin-acrcloud"
+  },
+  "keywords": [
+    "cordova",
+    "acrcloud",
+    "cordova-android",
+    "cordova-ios",
+    "acrcloud-sdk",
+    "recognition",
+    "audio recognition"
+  ]
+}
